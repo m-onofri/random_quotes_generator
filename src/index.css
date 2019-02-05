@@ -1,14 +1,99 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+#main_container {
+  height:100vh;
+  position: relative;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+h1, h2 {
+  font-family: "Luckiest Guy";
+  letter-spacing: 2px;
+}
+
+h3, h4 {
+  font-family: "Chalkduster"
+}
+
+h1 {
+  font-size: 55px;
+  width: 70%;
+  padding: 90px 0 120px;
+  margin: 0 auto;
+}
+h2 {font-size: 45px;}
+h3 {font-size: 24px;}
+h4 {font-size: 20px;}
+
+main {
+  text-align: center;
+}
+
+#img {
+  width: 450px;
+  height: 325px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: url('placeholder.png');
+  margin: 30px auto;
+}
+
+.quote {
+  padding-bottom: 20px;
+}
+
+.author {
+  padding-bottom: 30px;
+}
+
+nav {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  bottom: 50px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 65px;
+  color: #fff;
+  border-radius: 10px;
+  font-family: "Luckiest Guy";
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#cat_button {background-color: #FF0000;}
+#cat_button:hover,
+#cat_button:active {
+  color: #FF0000;
+  background-color: #FFF;
+}
+
+#random_button {background-color: #000;}
+#random_button:hover,
+#random_button:active {
+  color: #000;
+  background-color: #fff;
+}
+
+#dog_button {background-color: #35A404;}
+#dog_button:hover,
+#dog_button:active {
+  color: #35A404;
+  background-color: #fff;
 }
