@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+}
+
 #main_container {
   height:100vh;
   position: relative;
@@ -34,16 +38,18 @@ h4 {font-size: 20px;}
 
 main {
   text-align: center;
+  padding-top: 30px;
 }
 
 #img {
-  width: 450px;
+  display: block;
+  width: 550px;
   height: 325px;
-  background-position: 50% 50%;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background: url('placeholder.png');
-  margin: 30px auto;
+  margin: auto;
+  margin-bottom: 30px;
 }
 
 .quote {

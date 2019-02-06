@@ -4,13 +4,18 @@ import Nav from './Nav.js';
 import Start from './Start.js';
 
 class App extends Component {
-
-  state = {
-    active: false,
-    animal: undefined,
-    quote: {id: 0, quote: ""},
-    color: {id: 0, color: '#AFAFAF'}
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false,
+      quote: {id: 0, quote: ""},
+      color: {id: 0, color: '#AFAFAF'},
+      image: []
+    }
+    this.changeQuote = this.changeQuote.bind(this);
   }
+
+
 
   randomChoice = (array) => {
     return array[Math.floor(Math.random() * array.length)];
@@ -24,25 +29,38 @@ class App extends Component {
     return obj;
   }
 
-  changeQuote = (e) => {
-    let quote;
-    const btn = e.target.id;
-    const color = this.checkNoRepeat(COLORS, this.state.color);
+  quoteSelection = (btn) => {
     switch(btn) {
       case 'cat_button':
-        quote = this.checkNoRepeat(CAT_QUOTES, this.state.quote);
-        break;
+        return this.checkNoRepeat(CAT_QUOTES, this.state.quote);
       case 'dog_button':
-        quote = this.checkNoRepeat(DOG_QUOTES, this.state.quote);
-        break;
+        return this.checkNoRepeat(DOG_QUOTES, this.state.quote);
       case 'random_button':
-        quote = this.checkNoRepeat(this.randomChoice([CAT_QUOTES, DOG_QUOTES]), this.state.quote);
-        break;
+        return this.checkNoRepeat(this.randomChoice([CAT_QUOTES, DOG_QUOTES]), this.state.quote);
     }
-    this.setState({
+  };
+
+  selectURL = (btn) => {
+    return btn === 'cat_button' ? 'https://api.thecatapi.com/v1/images/search?mime_types=jpg,png' : 'https://api.thedogapi.com/v1/images/search?mime_types=jpg,png'
+  }
+
+  async changeQuote(e) {
+    let btn = e.target.id;
+    if (btn === 'random_button') btn = this.randomChoice(['cat_button', 'dog_button']);
+    const quote = this.quoteSelection(btn);
+    const color = this.checkNoRepeat(COLORS, this.state.color);
+    const url = this.selectURL(btn);
+
+    let response = await fetch(url);
+    let image = await response.json();
+
+    await console.log(image);
+
+    await this.setState({
       active: true,
       quote: quote,
-      color: color
+      color: color,
+      image: image
     });
   }
 
@@ -51,6 +69,7 @@ class App extends Component {
       <div
         id="main_container" style={{backgroundColor: this.state.color.color}}>
         {!this.state.active ? <Start /> : <Main
+                                            selectedImage={this.state.image}
                                             selectedQuote={this.state.quote}
                                           />}
         <Nav
