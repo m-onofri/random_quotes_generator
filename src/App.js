@@ -54,8 +54,6 @@ class App extends Component {
     let response = await fetch(url);
     let image = await response.json();
 
-    await console.log(image);
-
     await this.setState({
       active: true,
       quote: quote,
@@ -67,14 +65,16 @@ class App extends Component {
   render() {
     return (
       <div
-        id="main_container" style={{backgroundColor: this.state.color.color}}>
-        {!this.state.active ? <Start /> : <Main
-                                            selectedImage={this.state.image}
-                                            selectedQuote={this.state.quote}
-                                          />}
-        <Nav
-          changeQuote={this.changeQuote}
-        />
+        id="main_container">
+        <div id="sub_container">
+          {!this.state.active ? <Start /> : <Main
+                                              selectedImage={this.state.image}
+                                              selectedQuote={this.state.quote}
+                                            />}
+          <Nav
+            changeQuote={this.changeQuote}
+          />
+        </div>
       </div>
     );
   }
@@ -131,7 +131,7 @@ const DOG_QUOTES = [
  quote: "Everyone thinks they have the best dog. And none of them are wrong."},
 {id: 16,
  author: "Agnes Turnbull",
- quote: "Dogsí lives are too short. Their only fault, really."},
+ quote: "Dog's lives are too short. Their only fault, really."},
 {id: 17,
  author: "Robert Benchley",
  quote: "A dog teaches a boy fidelity, perseverance, and to turn around three times before lying down."},

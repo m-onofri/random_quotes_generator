@@ -11,11 +11,13 @@ class Main extends Component {
         <div
           id="img"
           style={{backgroundImage: "url(" + image + ")"}}
-        ></div>
-        <div id="quotes">
-          <h3 class="quote">{selectedQuote.quote}</h3>
-          <h4 class="author">{selectedQuote.author}</h4>
+        >
+          <div id="quotes">
+            <h3 class="quote">{selectedQuote.quote}</h3>
+            <h4 class="author">{selectedQuote.author}</h4>
+          </div>
         </div>
+
       </main>
     );
   }
